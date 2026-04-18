@@ -88,101 +88,109 @@
     }
 
     .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(22, 56, 38, 0.08);
-  box-shadow: 0 8px 24px rgba(10, 24, 16, 0.04);
-}
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(22, 56, 38, 0.08);
+      box-shadow: 0 8px 24px rgba(10, 24, 16, 0.04);
+    }
 
-   .nav-inner {
-  min-height: 104px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
+    .nav-inner {
+      min-height: 104px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: nowrap;
+    }
 
-  .brand {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 0 0 auto;
-  min-width: 0;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 0 0 auto;
+      min-width: 0;
+    }
 
     .brand img {
-  height: 95px;
-  width: auto;
-  object-fit: contain;
-}
+      height: 88px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
 
     .brand-text {
       display: flex;
       flex-direction: column;
       line-height: 1.2;
+      min-width: 0;
     }
 
     .brand-text strong {
-  font-size: 16px;
-  color: var(--green-dark);
-  letter-spacing: 0.2px;
-  font-weight: 800;
-}
+      font-size: 16px;
+      color: var(--green-dark);
+      letter-spacing: 0.2px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
 
     .brand-text span {
-  font-size: 11px;
-  color: #6b6b6b;
-  letter-spacing: 0.7px;
-}
+      font-size: 11px;
+      color: #6b6b6b;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
 
     .menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  flex: 1 1 auto;
-  flex-wrap: nowrap;
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex: 1 1 auto;
+      flex-wrap: nowrap;
+      min-width: 0;
+    }
 
-   .menu a {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-dark);
-  position: relative;
-  padding: 8px 0;
-  transition: 0.25s ease;
-  letter-spacing: 0.1px;
-}
+    .menu a {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+      position: relative;
+      padding: 8px 0;
+      transition: 0.25s ease;
+      letter-spacing: 0.1px;
+      white-space: nowrap;
+    }
 
     .menu a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), #f0d77a);
-  transition: 0.28s ease;
-  transform: translateX(-50%);
-  border-radius: 999px;
-}
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), #f0d77a);
+      transition: 0.28s ease;
+      transform: translateX(-50%);
+      border-radius: 999px;
+    }
 
-   .menu a:hover {
-  color: var(--green-main);
-}
+    .menu a:hover {
+      color: var(--green-main);
+    }
 
     .menu a:hover::after {
-  width: 100%;
-}
+      width: 100%;
+    }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex: 0 0 auto;
+      flex-wrap: nowrap;
     }
 
     .lang-switch {
@@ -226,10 +234,10 @@
     }
 
     .btn-primary {
-  background: linear-gradient(135deg, var(--green-dark), var(--green-main));
-  color: var(--white);
-  box-shadow: 0 10px 26px rgba(22, 56, 38, 0.18);
-}
+      background: linear-gradient(135deg, var(--green-dark), var(--green-main));
+      color: var(--white);
+      box-shadow: 0 10px 26px rgba(22, 56, 38, 0.18);
+    }
 
     .btn-primary:hover {
       background: var(--green-main);
@@ -701,14 +709,21 @@
 
     @media (max-width: 1180px) {
       .nav-inner {
+        min-height: auto;
         flex-wrap: wrap;
         padding: 18px 0;
+        align-items: flex-start;
       }
 
       .menu {
         order: 3;
         width: 100%;
         justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .nav-actions {
+        margin-left: auto;
       }
 
       .hero-inner,
@@ -771,13 +786,8 @@
 
       .nav-actions {
         width: 100%;
+        margin-left: 0;
       }
-      .actions{
-display:flex;
-align-items:center;
-gap:12px;
-flex-shrink:0;
-}
 
       .btn {
         width: auto;
@@ -835,7 +845,7 @@ flex-shrink:0;
   <header class="navbar">
     <div class="container nav-inner">
       <a href="#anasayfa" class="brand">
-        <img src="LOGO.png" alt="VTR Logo" class="logo" style="height:90px; width:auto;"
+        <img src="LOGO.png" alt="VTR Logo">
         <div class="brand-text">
           <strong data-lang="tr">VTR GIDA TARIM A.Ş.</strong>
           <strong data-lang="en" style="display:none;">VTR FOOD AGRICULTURE INC.</strong>
@@ -1234,12 +1244,10 @@ flex-shrink:0;
           <h3 data-lang="en" style="display:none;">Cooperation and quote requests</h3>
 
           <p data-lang="tr">
-            Ürün tedariği, uluslararası ticari bağlantılar, ithalat-ihracat fırsatları ve danışmanlık hizmetleri için
-            bizimle iletişime geçebilirsiniz.
+            Ürün tedariği, uluslararası ticari bağlantılar, ithalat-ihracat fırsatları ve danışmanlık hizmetleri için bizimle iletişime geçebilirsiniz.
           </p>
           <p data-lang="en" style="display:none;">
-            You may contact us regarding product sourcing, international trade connections, import-export opportunities
-            and consultancy services.
+            You may contact us regarding product sourcing, international trade connections, import-export opportunities and consultancy services.
           </p>
 
           <p data-lang="tr">
@@ -1269,12 +1277,10 @@ flex-shrink:0;
       <div class="footer-brand">
         <h3>VTR GIDA TARIM A.Ş.</h3>
         <p data-lang="tr">
-          Uluslararası ticari danışmanlık, uluslararası hibe projeleri danışmanlığı, ithalat ve ihracat faaliyetleri kapsamında
-          güvenilir, kurumsal ve profesyonel çözümler sunan dış ticaret şirketi.
+          Uluslararası ticari danışmanlık, uluslararası hibe projeleri danışmanlığı, ithalat ve ihracat faaliyetleri kapsamında güvenilir, kurumsal ve profesyonel çözümler sunan dış ticaret şirketi.
         </p>
         <p data-lang="en" style="display:none;">
-          A foreign trade company delivering reliable, corporate and professional solutions in international trade consultancy,
-          international grant project consultancy, import and export operations.
+          A foreign trade company delivering reliable, corporate and professional solutions in international trade consultancy, international grant project consultancy, import and export operations.
         </p>
       </div>
 
