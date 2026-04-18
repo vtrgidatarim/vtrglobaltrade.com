@@ -88,7 +88,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      min-height: 88px;
+      min-height: 84px;
     }
 
     .logo {
@@ -111,7 +111,7 @@
     }
 
     .logo-text strong {
-      font-size: 20px;
+      font-size: 18px;
       color: var(--green-dark);
       letter-spacing: 0.3px;
     }
@@ -161,6 +161,31 @@
       display: flex;
       align-items: center;
       gap: 12px;
+    }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green-dark);
+      transition: 0.25s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--green-dark);
+      color: var(--white);
     }
 
     .btn {
@@ -492,6 +517,15 @@
       color: var(--text-dark);
     }
 
+    .contact-list a {
+      color: var(--green-dark);
+      font-weight: 600;
+    }
+
+    .contact-list a:hover {
+      color: var(--gold);
+    }
+
     .contact-box {
       border: 1px solid var(--border);
       border-radius: 24px;
@@ -542,6 +576,10 @@
       font-size: 14px;
       color: rgba(255,255,255,0.66);
       text-align: center;
+    }
+
+    [data-lang] {
+      transition: 0.2s ease;
     }
 
     @media (max-width: 1100px) {
@@ -610,12 +648,16 @@
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="topbar-left">
-        <span>VTR GIDA TARIM A.Ş.</span>
-        <span>Uluslararası Ticaret ve Danışmanlık</span>
+        <span data-lang="tr">VTR GIDA TARIM A.Ş.</span>
+        <span data-lang="en" style="display:none;">VTR FOOD AGRICULTURE INC.</span>
+
+        <span data-lang="tr">Uluslararası Ticaret ve Danışmanlık</span>
+        <span data-lang="en" style="display:none;">International Trade and Consultancy</span>
       </div>
       <div class="topbar-right">
-        <span>rbilgic@vtrglobaltrade.com</span>
-        <span>Ankara, Türkiye</span>
+        <span>info@vtrglobaltrade.com</span>
+        <span data-lang="tr">Ankara, Türkiye</span>
+        <span data-lang="en" style="display:none;">Ankara, Türkiye</span>
       </div>
     </div>
   </div>
@@ -623,23 +665,40 @@
   <header class="navbar">
     <div class="container nav-inner">
       <a href="#" class="logo">
-        <img src="https://raw.githubusercontent.com/vtrgidatarim/vtrglobaltrade.com/main/LOGO.png" alt="VTR GIDA TARIM A.Ş. Logo">
+        <img src="LOGO.png" alt="VTR GIDA TARIM A.Ş. Logo">
         <div class="logo-text">
-          <strong>VTR GIDA TARIM A.Ş.</strong>
-          <span>International Trade • Import • Export • Consultancy</span>
+          <strong data-lang="tr">VTR GIDA TARIM A.Ş.</strong>
+          <strong data-lang="en" style="display:none;">VTR FOOD AGRICULTURE INC.</strong>
+
+          <span data-lang="tr">International Trade • Import • Export • Consultancy</span>
+          <span data-lang="en" style="display:none;">International Trade • Import • Export • Consultancy</span>
         </div>
       </a>
 
       <nav class="menu">
-        <a href="#anasayfa">Ana Sayfa</a>
-        <a href="#kurumsal">Kurumsal</a>
-        <a href="#hizmetler">Hizmetlerimiz</a>
-        <a href="#urunler">Ürün Grupları</a>
-        <a href="#iletisim">İletişim</a>
+        <a href="#anasayfa" data-lang="tr">Ana Sayfa</a>
+        <a href="#anasayfa" data-lang="en" style="display:none;">Home</a>
+
+        <a href="#kurumsal" data-lang="tr">Kurumsal</a>
+        <a href="#kurumsal" data-lang="en" style="display:none;">Corporate</a>
+
+        <a href="#hizmetler" data-lang="tr">Hizmetlerimiz</a>
+        <a href="#hizmetler" data-lang="en" style="display:none;">Services</a>
+
+        <a href="#urunler" data-lang="tr">Ürün Grupları</a>
+        <a href="#urunler" data-lang="en" style="display:none;">Product Groups</a>
+
+        <a href="#iletisim" data-lang="tr">İletişim</a>
+        <a href="#iletisim" data-lang="en" style="display:none;">Contact</a>
       </nav>
 
       <div class="nav-actions">
-        <a class="btn btn-primary" href="#iletisim">Teklif Talebi</a>
+        <div class="lang-switch">
+          <button class="lang-btn active" onclick="setLanguage('tr')" id="btn-tr">TR</button>
+          <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+        </div>
+        <a class="btn btn-primary" href="#iletisim" data-lang="tr">Teklif Talebi</a>
+        <a class="btn btn-primary" href="#iletisim" data-lang="en" style="display:none;">Request a Quote</a>
       </div>
     </div>
   </header>
@@ -647,28 +706,52 @@
   <section class="hero" id="anasayfa">
     <div class="container hero-grid">
       <div>
-        <div class="hero-tag">Uluslararası Ticaret • İthalat • İhracat • Proje Danışmanlığı</div>
-        <h1>Uluslararası ticarette güvenilir, ciddi ve kurumsal çözüm ortağınız.</h1>
-        <p>
+        <div class="hero-tag" data-lang="tr">Uluslararası Ticaret • İthalat • İhracat • Proje Danışmanlığı</div>
+        <div class="hero-tag" data-lang="en" style="display:none;">International Trade • Import • Export • Project Consultancy</div>
+
+        <h1 data-lang="tr">Uluslararası ticarette güvenilir, ciddi ve kurumsal çözüm ortağınız.</h1>
+        <h1 data-lang="en" style="display:none;">Your reliable, professional and corporate solution partner in international trade.</h1>
+
+        <p data-lang="tr">
           VTR GIDA TARIM A.Ş.; uluslararası ticari danışmanlık, uluslararası hibe projeleri danışmanlığı,
           ithalat ve ihracat faaliyetleri kapsamında gübreler, gıda ürünleri, sülfür, kimyasallar,
           petrol ürünleri ve farklı ürün gruplarında profesyonel çözümler sunar.
         </p>
+        <p data-lang="en" style="display:none;">
+          VTR FOOD AGRICULTURE INC. provides professional solutions in international trade consultancy,
+          international grant project consultancy, import and export operations across fertilizers,
+          food products, sulphur, chemicals, petroleum products and various commodity groups.
+        </p>
+
         <div class="hero-buttons">
-          <a href="#hizmetler" class="btn btn-primary">Faaliyet Alanlarımız</a>
-          <a href="#iletisim" class="btn btn-secondary">İletişime Geçin</a>
+          <a href="#hizmetler" class="btn btn-primary" data-lang="tr">Faaliyet Alanlarımız</a>
+          <a href="#hizmetler" class="btn btn-primary" data-lang="en" style="display:none;">Our Services</a>
+
+          <a href="#iletisim" class="btn btn-secondary" data-lang="tr">İletişime Geçin</a>
+          <a href="#iletisim" class="btn btn-secondary" data-lang="en" style="display:none;">Contact Us</a>
         </div>
       </div>
 
       <div class="hero-card">
-        <h3>Temel Uzmanlık Alanlarımız</h3>
-        <ul>
+        <h3 data-lang="tr">Temel Uzmanlık Alanlarımız</h3>
+        <h3 data-lang="en" style="display:none;">Core Areas of Expertise</h3>
+
+        <ul data-lang="tr">
           <li>Uluslararası Ticari Danışmanlık</li>
           <li>Uluslararası Hibe Projeleri Danışmanlığı</li>
           <li>İthalat ve İhracat Operasyonları</li>
           <li>Global Tedarik ve Tedarikçi Geliştirme</li>
           <li>Ürün, Pazar ve İş Geliştirme Çözümleri</li>
           <li>Kurumsal, güven esaslı ve sonuç odaklı yaklaşım</li>
+        </ul>
+
+        <ul data-lang="en" style="display:none;">
+          <li>International Trade Consultancy</li>
+          <li>International Grant Project Consultancy</li>
+          <li>Import and Export Operations</li>
+          <li>Global Sourcing and Supplier Development</li>
+          <li>Product, Market and Business Development Solutions</li>
+          <li>Corporate, trust-based and result-oriented approach</li>
         </ul>
       </div>
     </div>
@@ -677,45 +760,84 @@
   <section class="about" id="kurumsal">
     <div class="container">
       <div class="section-head">
-        <span class="mini-title">Kurumsal</span>
-        <h2>VTR GIDA TARIM A.Ş. hakkında</h2>
-        <p>
+        <span class="mini-title" data-lang="tr">Kurumsal</span>
+        <span class="mini-title" data-lang="en" style="display:none;">Corporate</span>
+
+        <h2 data-lang="tr">VTR GIDA TARIM A.Ş. hakkında</h2>
+        <h2 data-lang="en" style="display:none;">About VTR FOOD AGRICULTURE INC.</h2>
+
+        <p data-lang="tr">
           Uluslararası ticarette güven, hız, doğru yapılandırılmış süreç yönetimi ve güçlü iş ağı,
           sürdürülebilir başarı için temel unsurlardır.
+        </p>
+        <p data-lang="en" style="display:none;">
+          In international trade, trust, speed, properly structured process management and a strong business network
+          are the key pillars of sustainable success.
         </p>
       </div>
 
       <div class="about-grid">
         <div class="card">
-          <h3>Şirket Profili</h3>
-          <p>
+          <h3 data-lang="tr">Şirket Profili</h3>
+          <h3 data-lang="en" style="display:none;">Company Profile</h3>
+
+          <p data-lang="tr">
             VTR GIDA TARIM A.Ş.; uluslararası ticari danışmanlık, uluslararası hibe projeleri danışmanlığı,
             ithalat ve ihracat alanlarında faaliyet gösteren, kurumsal yaklaşımı güçlü bir dış ticaret şirketidir.
           </p>
-          <p>
+          <p data-lang="en" style="display:none;">
+            VTR FOOD AGRICULTURE INC. is a foreign trade company with a strong corporate approach, operating in
+            international trade consultancy, international grant project consultancy, import and export.
+          </p>
+
+          <p data-lang="tr">
             Şirketimiz; gübreler, gıda ürünleri, sülfür, kimyasallar, petrol ürünleri ve ilgili farklı ürün
             gruplarında tedarik, ticaret geliştirme, iş bağlantıları ve uluslararası ticaret süreçlerinin
             yönetimi konularında çözüm üretmektedir.
           </p>
-          <p>
+          <p data-lang="en" style="display:none;">
+            Our company provides solutions in sourcing, trade development, business connections and international trade
+            process management across fertilizers, food products, sulphur, chemicals, petroleum products and related sectors.
+          </p>
+
+          <p data-lang="tr">
             Mevcut ürün gruplarının yanı sıra, farklı pazarlarda yeni ürünlerin ithalat ve ihracat potansiyelini
             geliştirerek iş ortaklarına esnek ve sonuç odaklı ticari fırsatlar sunmaktayız.
+          </p>
+          <p data-lang="en" style="display:none;">
+            In addition to our current product portfolio, we develop import and export potential for new products in different
+            markets, offering flexible and result-oriented trade opportunities to our business partners.
           </p>
         </div>
 
         <div class="card">
-          <h3>Yaklaşımımız</h3>
-          <p>
+          <h3 data-lang="tr">Yaklaşımımız</h3>
+          <h3 data-lang="en" style="display:none;">Our Approach</h3>
+
+          <p data-lang="tr">
             VTR GIDA TARIM A.Ş. için ticaret yalnızca alım-satım faaliyeti değildir; aynı zamanda güvenilir
             bağlantılar kurmak, riskleri doğru yönetmek, doğru ürün ve doğru pazarı eşleştirmek anlamına gelir.
           </p>
-          <p>
+          <p data-lang="en" style="display:none;">
+            For VTR, trade is not merely buying and selling; it also means building reliable connections, managing risks properly,
+            and matching the right product with the right market.
+          </p>
+
+          <p data-lang="tr">
             Bu anlayışla; kurumsal ciddiyet, şeffaf iletişim, dikkatli süreç yönetimi ve profesyonel temsil
             ilkeleri doğrultusunda hareket ediyoruz.
           </p>
-          <p>
+          <p data-lang="en" style="display:none;">
+            With this understanding, we act in line with the principles of corporate seriousness, transparent communication,
+            careful process management and professional representation.
+          </p>
+
+          <p data-lang="tr">
             Hedefimiz; yerel ve uluslararası iş ortaklarımız için uzun vadeli, güvenilir ve sürdürülebilir
             ticari iş birlikleri oluşturmaktır.
+          </p>
+          <p data-lang="en" style="display:none;">
+            Our goal is to build long-term, reliable and sustainable commercial partnerships for our local and international stakeholders.
           </p>
         </div>
       </div>
@@ -725,30 +847,49 @@
   <section id="hizmetler">
     <div class="container">
       <div class="section-head">
-        <span class="mini-title">Hizmetlerimiz</span>
-        <h2>Profesyonel faaliyet alanlarımız</h2>
-        <p>
+        <span class="mini-title" data-lang="tr">Hizmetlerimiz</span>
+        <span class="mini-title" data-lang="en" style="display:none;">Services</span>
+
+        <h2 data-lang="tr">Profesyonel faaliyet alanlarımız</h2>
+        <h2 data-lang="en" style="display:none;">Our professional fields of activity</h2>
+
+        <p data-lang="tr">
           Şirketimizin faaliyetleri yalnızca ürün ticaretiyle sınırlı değildir; danışmanlık, proje geliştirme,
           iş bağlantıları ve ticari yapılandırma süreçlerini de kapsamaktadır.
+        </p>
+        <p data-lang="en" style="display:none;">
+          Our activities are not limited to product trading alone; they also include consultancy, project development,
+          business connections and commercial structuring processes.
         </p>
       </div>
 
       <div class="services-grid">
         <div class="service-box">
-          <h3>Uluslararası Ticari Danışmanlık</h3>
-          <p>Uluslararası pazarlarda ürün, tedarikçi, müşteri ve ticari model geliştirme süreçlerinde profesyonel danışmanlık sunuyoruz.</p>
+          <h3 data-lang="tr">Uluslararası Ticari Danışmanlık</h3>
+          <h3 data-lang="en" style="display:none;">International Trade Consultancy</h3>
+          <p data-lang="tr">Uluslararası pazarlarda ürün, tedarikçi, müşteri ve ticari model geliştirme süreçlerinde profesyonel danışmanlık sunuyoruz.</p>
+          <p data-lang="en" style="display:none;">We provide professional consultancy in product, supplier, customer and trade model development across international markets.</p>
         </div>
+
         <div class="service-box">
-          <h3>Uluslararası Hibe Projeleri Danışmanlığı</h3>
-          <p>Uluslararası fon, hibe ve proje çağrılarında geliştirme, yapılandırma ve danışmanlık desteği sağlıyoruz.</p>
+          <h3 data-lang="tr">Uluslararası Hibe Projeleri Danışmanlığı</h3>
+          <h3 data-lang="en" style="display:none;">International Grant Project Consultancy</h3>
+          <p data-lang="tr">Uluslararası fon, hibe ve proje çağrılarında geliştirme, yapılandırma ve danışmanlık desteği sağlıyoruz.</p>
+          <p data-lang="en" style="display:none;">We provide development, structuring and consultancy support for international funds, grant calls and project opportunities.</p>
         </div>
+
         <div class="service-box">
-          <h3>İthalat ve İhracat</h3>
-          <p>Farklı ürün gruplarında ithalat ve ihracat faaliyetleri yürüterek güvenilir ticari süreç yönetimi sağlıyoruz.</p>
+          <h3 data-lang="tr">İthalat ve İhracat</h3>
+          <h3 data-lang="en" style="display:none;">Import and Export</h3>
+          <p data-lang="tr">Farklı ürün gruplarında ithalat ve ihracat faaliyetleri yürüterek güvenilir ticari süreç yönetimi sağlıyoruz.</p>
+          <p data-lang="en" style="display:none;">We manage reliable trade processes by conducting import and export operations across different product groups.</p>
         </div>
+
         <div class="service-box">
-          <h3>İş Geliştirme ve Tedarik</h3>
-          <p>Yeni ürünlerin ve yeni pazarların geliştirilmesine yönelik tedarik, bağlantı ve ticari yapılandırma çözümleri üretiyoruz.</p>
+          <h3 data-lang="tr">İş Geliştirme ve Tedarik</h3>
+          <h3 data-lang="en" style="display:none;">Business Development and Sourcing</h3>
+          <p data-lang="tr">Yeni ürünlerin ve yeni pazarların geliştirilmesine yönelik tedarik, bağlantı ve ticari yapılandırma çözümleri üretiyoruz.</p>
+          <p data-lang="en" style="display:none;">We create sourcing, connection and commercial structuring solutions for the development of new products and new markets.</p>
         </div>
       </div>
     </div>
@@ -757,41 +898,75 @@
   <section class="products" id="urunler">
     <div class="container">
       <div class="section-head">
-        <span class="mini-title">Ürün Grupları</span>
-        <h2>Ana ürün portföyümüz</h2>
-        <p>
+        <span class="mini-title" data-lang="tr">Ürün Grupları</span>
+        <span class="mini-title" data-lang="en" style="display:none;">Product Groups</span>
+
+        <h2 data-lang="tr">Ana ürün portföyümüz</h2>
+        <h2 data-lang="en" style="display:none;">Our core product portfolio</h2>
+
+        <p data-lang="tr">
           Ticaretini yürüttüğümüz ve geliştirdiğimiz ana ürün grupları aşağıda özetlenmiştir.
+        </p>
+        <p data-lang="en" style="display:none;">
+          The main product groups we trade and develop are summarized below.
         </p>
       </div>
 
       <div class="products-grid">
         <div class="product-box">
-          <h3>Gübreler</h3>
-          <ul>
+          <h3 data-lang="tr">Gübreler</h3>
+          <h3 data-lang="en" style="display:none;">Fertilizers</h3>
+
+          <ul data-lang="tr">
             <li>Üre</li>
             <li>DAP</li>
             <li>Diğer organik gübre çeşitleri</li>
             <li>Diğer inorganik gübre çeşitleri</li>
           </ul>
+
+          <ul data-lang="en" style="display:none;">
+            <li>Urea</li>
+            <li>DAP</li>
+            <li>Other organic fertilizer types</li>
+            <li>Other inorganic fertilizer types</li>
+          </ul>
         </div>
 
         <div class="product-box">
-          <h3>Gıda Ürünleri</h3>
-          <ul>
+          <h3 data-lang="tr">Gıda Ürünleri</h3>
+          <h3 data-lang="en" style="display:none;">Food Products</h3>
+
+          <ul data-lang="tr">
             <li>Hububat</li>
             <li>Yemeklik yağlar</li>
             <li>Bakliyat</li>
             <li>Brezilya şekeri</li>
           </ul>
+
+          <ul data-lang="en" style="display:none;">
+            <li>Cereals</li>
+            <li>Edible oils</li>
+            <li>Legumes</li>
+            <li>Brazilian sugar</li>
+          </ul>
         </div>
 
         <div class="product-box">
-          <h3>Endüstriyel ve Enerji Ürünleri</h3>
-          <ul>
+          <h3 data-lang="tr">Endüstriyel ve Enerji Ürünleri</h3>
+          <h3 data-lang="en" style="display:none;">Industrial and Energy Products</h3>
+
+          <ul data-lang="tr">
             <li>Sülfür (Granül, Lump vb.)</li>
             <li>Kimyasallar</li>
             <li>EN590 10 PPM</li>
             <li>Jet yakıtları</li>
+          </ul>
+
+          <ul data-lang="en" style="display:none;">
+            <li>Sulphur (Granular, Lump etc.)</li>
+            <li>Chemicals</li>
+            <li>EN590 10 PPM</li>
+            <li>Jet fuels</li>
           </ul>
         </div>
       </div>
@@ -801,29 +976,47 @@
   <section class="stats">
     <div class="container">
       <div class="section-head" style="margin-bottom:34px;">
-        <span class="mini-title" style="color:#fff1b0;">VTR Avantajı</span>
-        <h2 style="color:#ffffff;">Kurumsal bakış açımız</h2>
-        <p style="color:rgba(255,255,255,0.84);">
+        <span class="mini-title" style="color:#fff1b0;" data-lang="tr">VTR Avantajı</span>
+        <span class="mini-title" style="color:#fff1b0; display:none;" data-lang="en">The VTR Advantage</span>
+
+        <h2 style="color:#ffffff;" data-lang="tr">Kurumsal bakış açımız</h2>
+        <h2 style="color:#ffffff; display:none;" data-lang="en">Our corporate perspective</h2>
+
+        <p style="color:rgba(255,255,255,0.84);" data-lang="tr">
           İş ortaklarımızla ilişkilerimizi güven, ciddiyet ve sürdürülebilirlik temelinde geliştiriyoruz.
+        </p>
+        <p style="color:rgba(255,255,255,0.84); display:none;" data-lang="en">
+          We build our relationships with business partners on the basis of trust, professionalism and sustainability.
         </p>
       </div>
 
       <div class="stats-grid">
         <div class="stat-box">
-          <h3>Güven</h3>
-          <p>Kurumsal ve dikkatli ticari yaklaşım</p>
+          <h3 data-lang="tr">Güven</h3>
+          <h3 data-lang="en" style="display:none;">Trust</h3>
+          <p data-lang="tr">Kurumsal ve dikkatli ticari yaklaşım</p>
+          <p data-lang="en" style="display:none;">Corporate and carefully managed trade approach</p>
         </div>
+
         <div class="stat-box">
-          <h3>Esneklik</h3>
-          <p>Yeni ürün ve yeni pazar geliştirme kabiliyeti</p>
+          <h3 data-lang="tr">Esneklik</h3>
+          <h3 data-lang="en" style="display:none;">Flexibility</h3>
+          <p data-lang="tr">Yeni ürün ve yeni pazar geliştirme kabiliyeti</p>
+          <p data-lang="en" style="display:none;">Capability to develop new products and new markets</p>
         </div>
+
         <div class="stat-box">
-          <h3>Ağ Gücü</h3>
-          <p>Uluslararası ticari bağlantılar ve iş geliştirme desteği</p>
+          <h3 data-lang="tr">Ağ Gücü</h3>
+          <h3 data-lang="en" style="display:none;">Network Strength</h3>
+          <p data-lang="tr">Uluslararası ticari bağlantılar ve iş geliştirme desteği</p>
+          <p data-lang="en" style="display:none;">International business connections and development support</p>
         </div>
+
         <div class="stat-box">
-          <h3>Süreç</h3>
-          <p>Planlı, kontrollü ve profesyonel operasyon yönetimi</p>
+          <h3 data-lang="tr">Süreç</h3>
+          <h3 data-lang="en" style="display:none;">Process</h3>
+          <p data-lang="tr">Planlı, kontrollü ve profesyonel operasyon yönetimi</p>
+          <p data-lang="en" style="display:none;">Planned, controlled and professional operation management</p>
         </div>
       </div>
     </div>
@@ -832,37 +1025,80 @@
   <section class="contact" id="iletisim">
     <div class="container">
       <div class="section-head">
-        <span class="mini-title">İletişim</span>
-        <h2>VTR ile iletişime geçin</h2>
-        <p>
+        <span class="mini-title" data-lang="tr">İletişim</span>
+        <span class="mini-title" data-lang="en" style="display:none;">Contact</span>
+
+        <h2 data-lang="tr">VTR ile iletişime geçin</h2>
+        <h2 data-lang="en" style="display:none;">Get in touch with VTR</h2>
+
+        <p data-lang="tr">
           İş birliği, ürün tedariği, ticari danışmanlık ve proje danışmanlığı talepleriniz için bizimle iletişime geçebilirsiniz.
+        </p>
+        <p data-lang="en" style="display:none;">
+          You may contact us for cooperation, product sourcing, trade consultancy and project consultancy requests.
         </p>
       </div>
 
       <div class="contact-grid">
         <div class="contact-info">
-          <h3>İletişim Bilgileri</h3>
-          <p>Kurumsal görüşmeler ve iş birliği talepleri için doğrudan bizimle bağlantı kurabilirsiniz.</p>
+          <h3 data-lang="tr">İletişim Bilgileri</h3>
+          <h3 data-lang="en" style="display:none;">Contact Information</h3>
+
+          <p data-lang="tr">Kurumsal görüşmeler ve iş birliği talepleri için doğrudan bizimle bağlantı kurabilirsiniz.</p>
+          <p data-lang="en" style="display:none;">You may contact us directly for corporate meetings and cooperation requests.</p>
+
           <ul class="contact-list">
-            <li><strong>Şirket:</strong> VTR GIDA TARIM A.Ş.</li>
-            <li><strong>E-posta:</strong> rbilgic@vtrglobaltrade.com</li>
-            <li><strong>Konum:</strong> Ankara, Türkiye</li>
-            <li><strong>Faaliyet:</strong> Uluslararası Ticaret, Danışmanlık, İthalat, İhracat</li>
+            <li>
+              <strong data-lang="tr">Şirket:</strong>
+              <strong data-lang="en" style="display:none;">Company:</strong>
+              VTR GIDA TARIM A.Ş.
+            </li>
+            <li>
+              <strong data-lang="tr">Ana E-posta:</strong>
+              <strong data-lang="en" style="display:none;">Primary Email:</strong>
+              <a href="mailto:info@vtrglobaltrade.com">info@vtrglobaltrade.com</a>
+            </li>
+            <li>
+              <strong data-lang="tr">İkinci E-posta:</strong>
+              <strong data-lang="en" style="display:none;">Secondary Email:</strong>
+              <a href="mailto:rbilgic@vtrglobaltrade.com">rbilgic@vtrglobaltrade.com</a>
+            </li>
+            <li>
+              <strong data-lang="tr">Adres:</strong>
+              <strong data-lang="en" style="display:none;">Address:</strong>
+              <a href="https://www.google.com/maps/search/?api=1&query=Mebusevleri+Mahallesi+Turgut+Reis+Caddesi+No%3A7+Kat%3A1+%C4%B0%C3%A7+Kap%C4%B1+No%3A9+06570+%C3%87ankaya+Ankara+T%C3%BCrkiye" target="_blank">
+                Mebusevleri Mahallesi Turgut Reis Caddesi No:7 Kat:1 İç Kapı No:9, 06570 Çankaya Ankara Türkiye
+              </a>
+            </li>
           </ul>
         </div>
 
         <div class="contact-box">
-          <h3>İş birliği ve teklif talepleri</h3>
-          <p>
+          <h3 data-lang="tr">İş birliği ve teklif talepleri</h3>
+          <h3 data-lang="en" style="display:none;">Cooperation and quote requests</h3>
+
+          <p data-lang="tr">
             Ürün tedariği, uluslararası ticari bağlantılar, ithalat-ihracat fırsatları ve danışmanlık hizmetleri
             için bizimle iletişime geçebilirsiniz.
           </p>
-          <p>
-            Web sitesi altyapısının sonraki aşamasında teklif formu, İngilizce sayfa yapısı ve detaylı alt sayfalar eklenecektir.
+          <p data-lang="en" style="display:none;">
+            You may contact us regarding product sourcing, international trade connections, import-export opportunities
+            and consultancy services.
           </p>
+
+          <p data-lang="tr">
+            Kurumsal iletişim için ana e-posta adresimizi, doğrudan temas için ise ikinci e-posta adresimizi kullanabilirsiniz.
+          </p>
+          <p data-lang="en" style="display:none;">
+            You may use our primary email for general corporate communication and our secondary email for direct contact.
+          </p>
+
           <div class="button-group">
-            <a href="mailto:rbilgic@vtrglobaltrade.com" class="btn btn-primary">E-posta Gönder</a>
-            <a href="#" class="btn btn-secondary">WhatsApp Yakında</a>
+            <a href="mailto:info@vtrglobaltrade.com" class="btn btn-primary" data-lang="tr">Ana E-posta</a>
+            <a href="mailto:info@vtrglobaltrade.com" class="btn btn-primary" data-lang="en" style="display:none;">Primary Email</a>
+
+            <a href="mailto:rbilgic@vtrglobaltrade.com" class="btn btn-secondary" data-lang="tr">İkinci E-posta</a>
+            <a href="mailto:rbilgic@vtrglobaltrade.com" class="btn btn-secondary" data-lang="en" style="display:none;">Secondary Email</a>
           </div>
         </div>
       </div>
@@ -873,33 +1109,74 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <h3>VTR GIDA TARIM A.Ş.</h3>
-        <p>
+        <p data-lang="tr">
           Uluslararası ticari danışmanlık, uluslararası hibe projeleri danışmanlığı, ithalat ve ihracat faaliyetleri
           kapsamında güvenilir, kurumsal ve profesyonel çözümler sunan dış ticaret şirketi.
+        </p>
+        <p data-lang="en" style="display:none;">
+          A foreign trade company delivering reliable, corporate and professional solutions in international trade consultancy,
+          international grant project consultancy, import and export operations.
         </p>
       </div>
 
       <div class="footer-col">
-        <h4>Kurumsal Menü</h4>
-        <a href="#anasayfa">Ana Sayfa</a>
-        <a href="#kurumsal">Kurumsal</a>
-        <a href="#hizmetler">Hizmetlerimiz</a>
-        <a href="#urunler">Ürün Grupları</a>
-        <a href="#iletisim">İletişim</a>
+        <h4 data-lang="tr">Kurumsal Menü</h4>
+        <h4 data-lang="en" style="display:none;">Corporate Menu</h4>
+
+        <a href="#anasayfa" data-lang="tr">Ana Sayfa</a>
+        <a href="#anasayfa" data-lang="en" style="display:none;">Home</a>
+
+        <a href="#kurumsal" data-lang="tr">Kurumsal</a>
+        <a href="#kurumsal" data-lang="en" style="display:none;">Corporate</a>
+
+        <a href="#hizmetler" data-lang="tr">Hizmetlerimiz</a>
+        <a href="#hizmetler" data-lang="en" style="display:none;">Services</a>
+
+        <a href="#urunler" data-lang="tr">Ürün Grupları</a>
+        <a href="#urunler" data-lang="en" style="display:none;">Product Groups</a>
+
+        <a href="#iletisim" data-lang="tr">İletişim</a>
+        <a href="#iletisim" data-lang="en" style="display:none;">Contact</a>
       </div>
 
       <div class="footer-col">
-        <h4>İletişim</h4>
-        <p>rbilgic@vtrglobaltrade.com</p>
-        <p>Ankara, Türkiye</p>
-        <p>VTR Global Trade</p>
+        <h4 data-lang="tr">İletişim</h4>
+        <h4 data-lang="en" style="display:none;">Contact</h4>
+
+        <p><a href="mailto:info@vtrglobaltrade.com">info@vtrglobaltrade.com</a></p>
+        <p><a href="mailto:rbilgic@vtrglobaltrade.com">rbilgic@vtrglobaltrade.com</a></p>
+        <p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Mebusevleri+Mahallesi+Turgut+Reis+Caddesi+No%3A7+Kat%3A1+%C4%B0%C3%A7+Kap%C4%B1+No%3A9+06570+%C3%87ankaya+Ankara+T%C3%BCrkiye" target="_blank">
+            Mebusevleri Mahallesi Turgut Reis Caddesi No:7 Kat:1 İç Kapı No:9
+          </a>
+        </p>
+        <p>06570 Çankaya Ankara Türkiye</p>
       </div>
     </div>
 
     <div class="container footer-bottom">
-      © 2026 VTR GIDA TARIM A.Ş. Tüm hakları saklıdır.
+      <span data-lang="tr">© 2026 VTR GIDA TARIM A.Ş. Tüm hakları saklıdır.</span>
+      <span data-lang="en" style="display:none;">© 2026 VTR FOOD AGRICULTURE INC. All rights reserved.</span>
     </div>
   </footer>
+
+  <script>
+    function setLanguage(lang) {
+      const allLangItems = document.querySelectorAll('[data-lang]');
+      allLangItems.forEach(item => {
+        if (item.getAttribute('data-lang') === lang) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      document.documentElement.lang = lang;
+      document.getElementById('btn-tr').classList.remove('active');
+      document.getElementById('btn-en').classList.remove('active');
+      document.getElementById('btn-' + lang).classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
