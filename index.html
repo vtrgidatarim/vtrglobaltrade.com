@@ -1,20 +1,905 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VTR GIDA TARIM A.Ş.</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VTR GIDA TARIM A.Ş. | Uluslararası Ticaret ve Danışmanlık</title>
+  <meta name="description" content="VTR GIDA TARIM A.Ş.; uluslararası ticari danışmanlık, uluslararası hibe projeleri danışmanlığı, ithalat ve ihracat alanlarında faaliyet gösteren kurumsal dış ticaret şirketidir." />
+  <style>
+    :root {
+      --green-dark: #183c2b;
+      --green-main: #1f4d2c;
+      --gold: #d4af37;
+      --gold-soft: #f2c94c;
+      --text-dark: #111111;
+      --text-soft: #5b5b5b;
+      --bg-light: #f7f7f3;
+      --white: #ffffff;
+      --border: #e6e6de;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--green-dark);
+      color: var(--white);
+      font-size: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .topbar-left,
+    .topbar-right {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .navbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 88px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo-text strong {
+      font-size: 20px;
+      color: var(--green-dark);
+      letter-spacing: 0.3px;
+    }
+
+    .logo-text span {
+      font-size: 12px;
+      color: var(--text-soft);
+      letter-spacing: 0.4px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .menu a {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-dark);
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .menu a:hover {
+      color: var(--green-main);
+    }
+
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: 0.25s ease;
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-main);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--green-dark);
+      border-color: var(--green-dark);
+    }
+
+    .btn-secondary:hover {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(12, 24, 17, 0.70), rgba(12, 24, 17, 0.68)),
+        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: var(--white);
+      padding: 110px 0 90px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      color: #f5f0d8;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 760px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.92);
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 24px;
+      padding: 28px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.18);
+    }
+
+    .hero-card h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: #fff4c8;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-card li {
+      padding-left: 18px;
+      position: relative;
+      color: rgba(255,255,255,0.94);
+      font-size: 15px;
+    }
+
+    .hero-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold-soft);
+      font-size: 18px;
+      line-height: 1;
+      top: 0;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 46px;
+    }
+
+    .section-head .mini-title {
+      display: inline-block;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-head h2 {
+      font-size: 38px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--green-dark);
+    }
+
+    .section-head p {
+      color: var(--text-soft);
+      font-size: 17px;
+    }
+
+    .about {
+      background: var(--bg-light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: 0 8px 30px rgba(18, 36, 24, 0.04);
+    }
+
+    .card h3 {
+      font-size: 26px;
+      color: var(--green-dark);
+      margin-bottom: 18px;
+    }
+
+    .card p {
+      color: var(--text-soft);
+      margin-bottom: 14px;
+      font-size: 16px;
+    }
+
+    .services-grid,
+    .products-grid,
+    .stats-grid,
+    .contact-grid,
+    .footer-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .service-box {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      background: var(--white);
+      transition: 0.25s ease;
+    }
+
+    .service-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.06);
+      border-color: #d9dbc9;
+    }
+
+    .service-box h3 {
+      color: var(--green-dark);
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .service-box p {
+      color: var(--text-soft);
+      font-size: 15px;
+    }
+
+    .products {
+      background: var(--bg-light);
+    }
+
+    .products-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+    }
+
+    .product-box h3 {
+      color: var(--green-dark);
+      font-size: 23px;
+      margin-bottom: 16px;
+    }
+
+    .product-box ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .product-box li {
+      position: relative;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 15px;
+    }
+
+    .product-box li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 18px;
+      line-height: 1;
+      top: 0;
+    }
+
+    .stats {
+      background: linear-gradient(135deg, var(--green-dark), #234f39);
+      color: var(--white);
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-box {
+      text-align: center;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .stat-box h3 {
+      font-size: 36px;
+      color: #fff1b0;
+      margin-bottom: 10px;
+    }
+
+    .stat-box p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+
+    .contact-info {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 34px;
+    }
+
+    .contact-info h3,
+    .contact-box h3 {
+      font-size: 28px;
+      color: var(--green-dark);
+      margin-bottom: 18px;
+    }
+
+    .contact-info p,
+    .contact-box p {
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-list li {
+      color: var(--text-dark);
+    }
+
+    .contact-box {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 34px;
+      background: var(--white);
+    }
+
+    .contact-box .button-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #10281d;
+      color: rgba(255,255,255,0.86);
+      padding: 56px 0 22px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.3fr 1fr 1fr;
+      margin-bottom: 34px;
+    }
+
+    .footer-brand h3,
+    .footer-col h4 {
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p,
+    .footer-col p,
+    .footer-col a {
+      color: rgba(255,255,255,0.76);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .footer-col a {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 18px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.66);
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .services-grid,
+      .products-grid,
+      .stats-grid,
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 0;
+      }
+
+      .menu {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .section-head h2 {
+        font-size: 30px;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .services-grid,
+      .products-grid,
+      .stats-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner,
+      .nav-inner,
+      .menu,
+      .nav-actions,
+      .hero-buttons,
+      .contact-box .button-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo img {
+        height: 52px;
+      }
+
+      .logo-text strong {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
-<body style="font-family:Arial; text-align:center; padding:60px;">
+<body>
 
-<h1>VTR GIDA TARIM A.Ş.</h1>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span>VTR GIDA TARIM A.Ş.</span>
+        <span>Uluslararası Ticaret ve Danışmanlık</span>
+      </div>
+      <div class="topbar-right">
+        <span>rbilgic@vtrglobaltrade.com</span>
+        <span>Ankara, Türkiye</span>
+      </div>
+    </div>
+  </div>
 
-<h2>Uluslararası Ticari Danışmanlık, İthalat ve İhracat</h2>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <img src="https://raw.githubusercontent.com/vtrgidatarim/vtrglobaltrade.com/main/LOGO.png" alt="VTR GIDA TARIM A.Ş. Logo">
+        <div class="logo-text">
+          <strong>VTR GIDA TARIM A.Ş.</strong>
+          <span>International Trade • Import • Export • Consultancy</span>
+        </div>
+      </a>
 
-<p>
-Gübre, Gıda Ürünleri, Sülfür, Kimyasallar ve Petrol Ürünlerinde
-güvenilir ticaret ortağınız.
-</p>
+      <nav class="menu">
+        <a href="#anasayfa">Ana Sayfa</a>
+        <a href="#kurumsal">Kurumsal</a>
+        <a href="#hizmetler">Hizmetlerimiz</a>
+        <a href="#urunler">Ürün Grupları</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="#iletisim">Teklif Talebi</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="anasayfa">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-tag">Uluslararası Ticaret • İthalat • İhracat • Proje Danışmanlığı</div>
+        <h1>Uluslararası ticarette güvenilir, ciddi ve kurumsal çözüm ortağınız.</h1>
+        <p>
+          VTR GIDA TARIM A.Ş.; uluslararası ticari danışmanlık, uluslararası hibe projeleri danışmanlığı,
+          ithalat ve ihracat faaliyetleri kapsamında gübreler, gıda ürünleri, sülfür, kimyasallar,
+          petrol ürünleri ve farklı ürün gruplarında profesyonel çözümler sunar.
+        </p>
+        <div class="hero-buttons">
+          <a href="#hizmetler" class="btn btn-primary">Faaliyet Alanlarımız</a>
+          <a href="#iletisim" class="btn btn-secondary">İletişime Geçin</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Temel Uzmanlık Alanlarımız</h3>
+        <ul>
+          <li>Uluslararası Ticari Danışmanlık</li>
+          <li>Uluslararası Hibe Projeleri Danışmanlığı</li>
+          <li>İthalat ve İhracat Operasyonları</li>
+          <li>Global Tedarik ve Tedarikçi Geliştirme</li>
+          <li>Ürün, Pazar ve İş Geliştirme Çözümleri</li>
+          <li>Kurumsal, güven esaslı ve sonuç odaklı yaklaşım</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="kurumsal">
+    <div class="container">
+      <div class="section-head">
+        <span class="mini-title">Kurumsal</span>
+        <h2>VTR GIDA TARIM A.Ş. hakkında</h2>
+        <p>
+          Uluslararası ticarette güven, hız, doğru yapılandırılmış süreç yönetimi ve güçlü iş ağı,
+          sürdürülebilir başarı için temel unsurlardır.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="card">
+          <h3>Şirket Profili</h3>
+          <p>
+            VTR GIDA TARIM A.Ş.; uluslararası ticari danışmanlık, uluslararası hibe projeleri danışmanlığı,
+            ithalat ve ihracat alanlarında faaliyet gösteren, kurumsal yaklaşımı güçlü bir dış ticaret şirketidir.
+          </p>
+          <p>
+            Şirketimiz; gübreler, gıda ürünleri, sülfür, kimyasallar, petrol ürünleri ve ilgili farklı ürün
+            gruplarında tedarik, ticaret geliştirme, iş bağlantıları ve uluslararası ticaret süreçlerinin
+            yönetimi konularında çözüm üretmektedir.
+          </p>
+          <p>
+            Mevcut ürün gruplarının yanı sıra, farklı pazarlarda yeni ürünlerin ithalat ve ihracat potansiyelini
+            geliştirerek iş ortaklarına esnek ve sonuç odaklı ticari fırsatlar sunmaktayız.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Yaklaşımımız</h3>
+          <p>
+            VTR GIDA TARIM A.Ş. için ticaret yalnızca alım-satım faaliyeti değildir; aynı zamanda güvenilir
+            bağlantılar kurmak, riskleri doğru yönetmek, doğru ürün ve doğru pazarı eşleştirmek anlamına gelir.
+          </p>
+          <p>
+            Bu anlayışla; kurumsal ciddiyet, şeffaf iletişim, dikkatli süreç yönetimi ve profesyonel temsil
+            ilkeleri doğrultusunda hareket ediyoruz.
+          </p>
+          <p>
+            Hedefimiz; yerel ve uluslararası iş ortaklarımız için uzun vadeli, güvenilir ve sürdürülebilir
+            ticari iş birlikleri oluşturmaktır.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hizmetler">
+    <div class="container">
+      <div class="section-head">
+        <span class="mini-title">Hizmetlerimiz</span>
+        <h2>Profesyonel faaliyet alanlarımız</h2>
+        <p>
+          Şirketimizin faaliyetleri yalnızca ürün ticaretiyle sınırlı değildir; danışmanlık, proje geliştirme,
+          iş bağlantıları ve ticari yapılandırma süreçlerini de kapsamaktadır.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-box">
+          <h3>Uluslararası Ticari Danışmanlık</h3>
+          <p>Uluslararası pazarlarda ürün, tedarikçi, müşteri ve ticari model geliştirme süreçlerinde profesyonel danışmanlık sunuyoruz.</p>
+        </div>
+        <div class="service-box">
+          <h3>Uluslararası Hibe Projeleri Danışmanlığı</h3>
+          <p>Uluslararası fon, hibe ve proje çağrılarında geliştirme, yapılandırma ve danışmanlık desteği sağlıyoruz.</p>
+        </div>
+        <div class="service-box">
+          <h3>İthalat ve İhracat</h3>
+          <p>Farklı ürün gruplarında ithalat ve ihracat faaliyetleri yürüterek güvenilir ticari süreç yönetimi sağlıyoruz.</p>
+        </div>
+        <div class="service-box">
+          <h3>İş Geliştirme ve Tedarik</h3>
+          <p>Yeni ürünlerin ve yeni pazarların geliştirilmesine yönelik tedarik, bağlantı ve ticari yapılandırma çözümleri üretiyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products" id="urunler">
+    <div class="container">
+      <div class="section-head">
+        <span class="mini-title">Ürün Grupları</span>
+        <h2>Ana ürün portföyümüz</h2>
+        <p>
+          Ticaretini yürüttüğümüz ve geliştirdiğimiz ana ürün grupları aşağıda özetlenmiştir.
+        </p>
+      </div>
+
+      <div class="products-grid">
+        <div class="product-box">
+          <h3>Gübreler</h3>
+          <ul>
+            <li>Üre</li>
+            <li>DAP</li>
+            <li>Diğer organik gübre çeşitleri</li>
+            <li>Diğer inorganik gübre çeşitleri</li>
+          </ul>
+        </div>
+
+        <div class="product-box">
+          <h3>Gıda Ürünleri</h3>
+          <ul>
+            <li>Hububat</li>
+            <li>Yemeklik yağlar</li>
+            <li>Bakliyat</li>
+            <li>Brezilya şekeri</li>
+          </ul>
+        </div>
+
+        <div class="product-box">
+          <h3>Endüstriyel ve Enerji Ürünleri</h3>
+          <ul>
+            <li>Sülfür (Granül, Lump vb.)</li>
+            <li>Kimyasallar</li>
+            <li>EN590 10 PPM</li>
+            <li>Jet yakıtları</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <div class="section-head" style="margin-bottom:34px;">
+        <span class="mini-title" style="color:#fff1b0;">VTR Avantajı</span>
+        <h2 style="color:#ffffff;">Kurumsal bakış açımız</h2>
+        <p style="color:rgba(255,255,255,0.84);">
+          İş ortaklarımızla ilişkilerimizi güven, ciddiyet ve sürdürülebilirlik temelinde geliştiriyoruz.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <h3>Güven</h3>
+          <p>Kurumsal ve dikkatli ticari yaklaşım</p>
+        </div>
+        <div class="stat-box">
+          <h3>Esneklik</h3>
+          <p>Yeni ürün ve yeni pazar geliştirme kabiliyeti</p>
+        </div>
+        <div class="stat-box">
+          <h3>Ağ Gücü</h3>
+          <p>Uluslararası ticari bağlantılar ve iş geliştirme desteği</p>
+        </div>
+        <div class="stat-box">
+          <h3>Süreç</h3>
+          <p>Planlı, kontrollü ve profesyonel operasyon yönetimi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="iletisim">
+    <div class="container">
+      <div class="section-head">
+        <span class="mini-title">İletişim</span>
+        <h2>VTR ile iletişime geçin</h2>
+        <p>
+          İş birliği, ürün tedariği, ticari danışmanlık ve proje danışmanlığı talepleriniz için bizimle iletişime geçebilirsiniz.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>İletişim Bilgileri</h3>
+          <p>Kurumsal görüşmeler ve iş birliği talepleri için doğrudan bizimle bağlantı kurabilirsiniz.</p>
+          <ul class="contact-list">
+            <li><strong>Şirket:</strong> VTR GIDA TARIM A.Ş.</li>
+            <li><strong>E-posta:</strong> rbilgic@vtrglobaltrade.com</li>
+            <li><strong>Konum:</strong> Ankara, Türkiye</li>
+            <li><strong>Faaliyet:</strong> Uluslararası Ticaret, Danışmanlık, İthalat, İhracat</li>
+          </ul>
+        </div>
+
+        <div class="contact-box">
+          <h3>İş birliği ve teklif talepleri</h3>
+          <p>
+            Ürün tedariği, uluslararası ticari bağlantılar, ithalat-ihracat fırsatları ve danışmanlık hizmetleri
+            için bizimle iletişime geçebilirsiniz.
+          </p>
+          <p>
+            Web sitesi altyapısının sonraki aşamasında teklif formu, İngilizce sayfa yapısı ve detaylı alt sayfalar eklenecektir.
+          </p>
+          <div class="button-group">
+            <a href="mailto:rbilgic@vtrglobaltrade.com" class="btn btn-primary">E-posta Gönder</a>
+            <a href="#" class="btn btn-secondary">WhatsApp Yakında</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>VTR GIDA TARIM A.Ş.</h3>
+        <p>
+          Uluslararası ticari danışmanlık, uluslararası hibe projeleri danışmanlığı, ithalat ve ihracat faaliyetleri
+          kapsamında güvenilir, kurumsal ve profesyonel çözümler sunan dış ticaret şirketi.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kurumsal Menü</h4>
+        <a href="#anasayfa">Ana Sayfa</a>
+        <a href="#kurumsal">Kurumsal</a>
+        <a href="#hizmetler">Hizmetlerimiz</a>
+        <a href="#urunler">Ürün Grupları</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>İletişim</h4>
+        <p>rbilgic@vtrglobaltrade.com</p>
+        <p>Ankara, Türkiye</p>
+        <p>VTR Global Trade</p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      © 2026 VTR GIDA TARIM A.Ş. Tüm hakları saklıdır.
+    </div>
+  </footer>
 
 </body>
 </html>
